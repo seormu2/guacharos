@@ -16,9 +16,12 @@
                         <label for="loginPassword" class="form-label">Contraseña :</label>
                         <input type="password" class="form-control" id="loginPassword" name="password" formControlName="password">
                     </div>
-                    <button class="btn btn-success w-100">
-                        <a class="d-block w-100" style="color: inherit;" (click)="createSesion()">Iniciar sesión</a>
+                    <button class="btn btn-success w-100" *ngIf="!spinnerAccess" (click)="createSesion()">
+                        <a class="d-block w-100" style="color: inherit;" >Iniciar sesión</a>
                     </button>
+                    <div class="spinner-border m-5" *ngIf="spinnerAccess" role="status" >
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
                     <div class="alert alert-danger mt-4" role="alert" *ngIf="messageError!=''">
                         {{messageError}}
                     </div>

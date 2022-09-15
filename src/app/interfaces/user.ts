@@ -19,3 +19,15 @@ export interface DataAccess {
 export interface validateAccess {
     access: boolean,
 }
+
+export interface UpdateUser {
+    idUser: string,
+    username: string,
+    token: string
+}
+
+export interface UpdatePassword {
+    idUser: string,
+    password: string,
+    token: string
+}

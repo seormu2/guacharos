@@ -17,6 +17,7 @@ export class AccessComponent implements OnInit {
   messageError: string = '';
   tokenUser: string = '';
   idUser:    string = '';
+  spinnerAccess: boolean = false;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -28,6 +29,7 @@ export class AccessComponent implements OnInit {
   ngOnInit(): void {
     this.tokenUser = this.cookieService.get('token');
     this.idUser = this.cookieService.get('id');
+    console.log('token',this.tokenUser)
     this.verifyAccess();
     this.createForm();
   }
@@ -40,10 +42,13 @@ export class AccessComponent implements OnInit {
   }
 
   createSesion(): void {
+    this.spinnerAccess = true;
+    this.messageError = '';
     if(this.formGroup.status == 'VALID'){
       const dataUser: DataAccess = this.formGroup.value;
       this.service.validateAccess(dataUser).subscribe(
         ( access: AccessOK ) => {
+          this.spinnerAccess = false;
           this.messageError = '';
           this.cookieService.set('token', access.data.token);
           this.cookieService.set('id', access.data.id);
@@ -52,7 +57,7 @@ export class AccessComponent implements OnInit {
         }, 
         (error: HttpErrorResponse) => {
           this.messageError = error.error.message;
-          
+          this.spinnerAccess = false;
         }
       )
     }else{

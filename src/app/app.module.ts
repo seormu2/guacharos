@@ -15,6 +15,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { SidebarMobileComponent } from './components/shared/sidebar-mobile/sidebar-mobile.component';
 import { ProductsComponent } from './components/products/products.component';
 import { UserComponent } from './components/user/user.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { UserComponent } from './components/user/user.component';
     HeaderComponent,
     SidebarMobileComponent,
     ProductsComponent,
-    UserComponent
+    UserComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,

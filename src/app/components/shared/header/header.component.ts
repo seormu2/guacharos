@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +11,10 @@ export class HeaderComponent implements OnInit {
 
   date: string = null;
 
-  constructor() { }
+  constructor(
+    private readonly cookies: CookieService,
+    private readonly router: Router
+  ) { }
 
   ngOnInit(): void {
     
@@ -18,6 +23,12 @@ export class HeaderComponent implements OnInit {
 
   getDay(): void {
     this.date = new Date().toDateString();
+  }
+
+  closeAccess(): void {
+    console.log("Hola")
+    this.cookies.set('token', '');
+    this.router.navigate(['/login'])
   }
 
 }

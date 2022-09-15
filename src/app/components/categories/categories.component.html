@@ -1,0 +1,79 @@
+<main class="hp-bg-color-dark-90 d-flex min-vh-100">
+    <app-sidebar></app-sidebar>
+    <div class="hp-main-layout">
+        <app-header></app-header>
+        <app-sidebar-mobile></app-sidebar-mobile>
+        <div class="hp-main-layout-content">
+            <div class="row mb-32 gy-32">
+                <div class="col-12">
+                    <div class="hp-page-title">
+                        <h1 class="mb-8">Categorias</h1>
+                        <p class="mb-0 hp-p1-body">Sección para administración de categorias.</p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row justify-content-between">
+                                <div class="col-12 mt-16">
+                                    <form>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="mb-24 col-6">
+                                                    <label for="exampleInputEmail1" class="form-label">Nombre de la categoria</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-success">Guardar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form [formGroup]="formGroupSearch">
+                                <div class="row">
+                                    <div class="mb-24 col-6">
+                                        <label for="exampleInputEmail1" class="form-label"></label>
+                                        <input type="text" class="form-control" placeholder="Buscar categoría" formControlName="category" (keyup)="searchCategory()">
+                                    </div>
+                                </div>
+                            </form>
+                            <table class="table table-bordered" style="margin-top: 30px;">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">categoría</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let categorie of listCategories">
+                                        <td scope="row">{{categorie.id}}</td>
+                                        <td>{{categorie.category}}</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                  Acciones
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                  <li><a class="dropdown-item">Actualizar</a></li>
+                                                  <li><a class="dropdown-item" >Eliminar</a></li>
+                                                </ul>
+                                              </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</main>

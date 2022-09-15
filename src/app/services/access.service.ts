@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AccessService {
 
-  private URLACCESS = 'http://192.168.100.4/guacharos/paths/Access.php';
+  private URLACCESS = 'http://127.0.0.1/guacharos/paths/Access.php';
 
   constructor(
     private readonly http: HttpClient,
@@ -23,7 +23,7 @@ export class AccessService {
   validateTokenAccess(id: string, token: string, path: string): any{
     return this.http.get<validateAccess>(this.URLACCESS+'?id='+id+'&token='+token).subscribe(
       (result: validateAccess) => {
-        if(result.access){
+        if(result.access ){
           path == 'login' ? this.route.navigate(['']) : this.route.navigate([path]);
         }else{
           this.route.navigate(['login']);
