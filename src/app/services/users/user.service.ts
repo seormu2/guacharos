@@ -18,7 +18,6 @@ export class UserService {
   }
 
   updatePassword(body: UpdatePassword): Observable<AccessOK>{
-    console.log("service")
     return this.http.put<AccessOK>(this.URL+'?password', body)
   }
 }

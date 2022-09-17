@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.tokenUser = this.cookieService.get('token');
     this.idUser = this.cookieService.get('id');
+    console.log(this.tokenUser)
     this.verifyAccess();
   }
 
